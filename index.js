@@ -79,13 +79,7 @@ function fontawesomeSubset(subset, output_dir, options){
             }),
             ttf = Buffer.from(ttf_utils.buffer);
 
-        mkdirp.sync(path.resolve(output_dir), (err) => {
-            if (err) {
-                console.error(err);
-                console.error("Unable to create directory for output files.");
-            }
-        });
-
+        const create_dir = mkdirp.sync(path.resolve(output_dir));
         const output_file = path.resolve(output_dir, font_map[font_family]);
 
         fs.writeFileSync(`${output_file}.svg`, svg_contents_new);
